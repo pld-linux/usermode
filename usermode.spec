@@ -58,7 +58,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644, root, root, 755)
 /etc/X11/wmconfig/*
 %attr(0755, root, root) %{_bindir}/*
-%attr(4755, root, root) /usr/sbin/userhelper
+%attr(4755, root, root) %{_sbindir}/userhelper
 %{_mandir}/man[18]/*
 
 %changelog

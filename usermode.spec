@@ -12,7 +12,7 @@ Group(pl):	X11/Aplikacje
 Source:		%{name}-%{version}.tar.gz
 Patch:		usermode-FHS20.patch
 Requires:	util-linux
-BuildRoot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Several graphical tools, including a tool to help users manage floppies

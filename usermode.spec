@@ -6,27 +6,32 @@ Summary(tr):	Kullanýcý araçlarý
 Name:		usermode
 Version:	1.9
 Release:	2
-Copyright:	GPL
+License:	GPL
 Group:		X11/Applications
 Group(pl):	X11/Aplikacje
-Source:		%{name}-%{version}.tar.gz
-Patch:		usermode-FHS20.patch
+Source0:	%{name}-%{version}.tar.gz
+Patch0:		usermode-FHS20.patch
 Requires:	util-linux
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
+%define		_prefix		/usr/X11R6
+%define		_mandir		%{_prefix}/man
+
 %description
-Several graphical tools, including a tool to help users manage floppies
-(and other removable media) and a tool to help the user change his or
-her finger information.
+Several graphical tools, including a tool to help users manage
+floppies (and other removable media) and a tool to help the user
+change his or her finger information.
 
 %description -l de
-Mehrere grafische Tools, u.a. eines zum Verwalten von Disketten (und anderen Wechseldatenträgern) und eines zum Ändern der Finger-Informationen eines Benutzers
+Mehrere grafische Tools, u.a. eines zum Verwalten von Disketten (und
+anderen Wechseldatenträgern) und eines zum Ändern der
+Finger-Informationen eines Benutzers
 
 %description -l fr
 De nombreux outils graphiques, dont un outil pour aider les
-utilsateurs à gérer les disquettes (et les autres supports amovibles) et un
-outil pour aider les utilisateurs à modifier les informations les
-concernant.
+utilsateurs à gérer les disquettes (et les autres supports amovibles)
+et un outil pour aider les utilisateurs à modifier les informations
+les concernant.
 
 %description -l pl
 Kilka graficznych narzêdzi, w tym program pomagaj±cy u¿ytkownikowi
@@ -35,7 +40,8 @@ pomocny przy zmianie informacji dla programu finger.
 
 %description -l tr
 Bu paket, kullanýcýlarýn disketlerin yönetimini yapmak, kiþisel finger
-bilgilerini deðiþtirmek gibi iþler için kullanabilecekleri araçlar içerir.
+bilgilerini deðiþtirmek gibi iþler için kullanabilecekleri araçlar
+içerir.
 
 %prep
 %setup -q
@@ -55,7 +61,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-/usr/X11R6/share/applnk/*
+%{_applnkdir}/*
 %attr(0755,root,root) %{_bindir}/*
 %attr(4755,root,root) %{_sbindir}/userhelper
 %{_mandir}/man1/*

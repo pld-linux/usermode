@@ -13,8 +13,6 @@ Patch0:		%{name}-FHS20.patch
 Requires:	util-linux
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_prefix		/usr/X11R6
-%define		_mandir		%{_prefix}/man
 
 %description
 Several graphical tools, including a tool to help users manage

@@ -8,8 +8,6 @@ Version:	1.9
 Release:	2
 License:	GPL
 Group:		X11/Applications
-Group(de):	X11/Applikationen
-Group(pl):	X11/Aplikacje
 Source0:	%{name}-%{version}.tar.gz
 Patch0:		%{name}-FHS20.patch
 Requires:	util-linux

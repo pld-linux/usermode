@@ -59,7 +59,7 @@ rm -rf $RPM_BUILD_ROOT
 /etc/X11/wmconfig/*
 %attr(0755, root, root) /usr/bin/*
 %attr(4755, root, root) /usr/sbin/userhelper
-%attr(0644, root,  man) %{_mandir}/man[18]/*
+%{_mandir}/man[18]/*
 
 %changelog
 * Tue Dec 1 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>

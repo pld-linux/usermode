@@ -13,7 +13,7 @@ Source0:	%{name}-%{version}.tar.gz
 Patch0:		%{name}-FHS20.patch
 Requires:	util-linux
 #Requires:	nss_db
-BuildRequires:  pam-devel
+BuildRequires:	pam-devel
 BuildRequires:	gtk+-devel
 BuildRequires:	pwdb-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)

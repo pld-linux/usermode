@@ -8,9 +8,10 @@ Version:	1.9
 Release:	2
 License:	GPL
 Group:		X11/Applications
+Group(de):	X11/Applikationen
 Group(pl):	X11/Aplikacje
 Source0:	%{name}-%{version}.tar.gz
-Patch0:		usermode-FHS20.patch
+Patch0:		%{name}-FHS20.patch
 Requires:	util-linux
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -48,13 +49,11 @@ içerir.
 %patch -p1
 
 %build
-%{__make} CFLAGS="$RPM_OPT_FLAGS `gtk-config --cflags`"
+%{__make} CFLAGS="%{rpmcflags} `gtk-config --cflags`"
 
 %install
 rm -rf $RPM_BUILD_ROOT
 %{__make} install install-man PREFIX=$RPM_BUILD_ROOT
-
-gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man{1,8}/*
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -64,5 +63,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_applnkdir}/*
 %attr(0755,root,root) %{_bindir}/*
 %attr(4755,root,root) %{_sbindir}/userhelper
-%{_mandir}/man1/*
-%{_mandir}/man8/*
+%{_mandir}/man[18]/*

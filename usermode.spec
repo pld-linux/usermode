@@ -48,11 +48,11 @@ içerir.
 %patch -p1
 
 %build
-make CFLAGS="$RPM_OPT_FLAGS `gtk-config --cflags`"
+%{__make} CFLAGS="$RPM_OPT_FLAGS `gtk-config --cflags`"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-make install install-man PREFIX=$RPM_BUILD_ROOT
+%{__make} install install-man PREFIX=$RPM_BUILD_ROOT
 
 gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man{1,8}/*
 

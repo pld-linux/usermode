@@ -54,6 +54,8 @@ içerir.
 %install
 rm -rf $RPM_BUILD_ROOT
 %{__make} install install-man PREFIX=$RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_applnkdir}
+mv $RPM_BUILD_ROOT/etc/X11/applnk/System/* $RPM_BUILD_ROOT%{_applnkdir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT

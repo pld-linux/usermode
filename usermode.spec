@@ -65,7 +65,7 @@ rm -rf $RPM_BUILD_ROOT
 * Tue Dec 1 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.4.3-2]
 - added -q %setup parameter,
-- added gziping man pages,
+- added gzipping man pages,
 - simpification in %files,
 - added using $RPM_OPT_FLAGS during conpile,
 - added Group(pl).

@@ -1,17 +1,17 @@
-Summary:     User Tools
-Summary(de): Anwender-Tools
-Summary(fr): Outils utilisateur
-Summary(pl): Narzêdzia u¿ytkownika
-Summary(tr): Kullanýcý araçlarý
-Name:        usermode
-Version:     1.4.3
-Release:     2
-Copyright:   GPL
-Group:       X11/Applications
-Group(pl):   X11/Aplikacje
-Source:      %{name}-%{version}.tar.gz
-Patch:       usermode.patch
-Requires:    util-linux
+Summary:	User Tools
+Summary(de):	Anwender-Tools
+Summary(fr):	Outils utilisateur
+Summary(pl):	Narzêdzia u¿ytkownika
+Summary(tr):	Kullanýcý araçlarý
+Name:		usermode
+Version:	1.9
+Release:	2
+Copyright:	GPL
+Group:		X11/Applications
+Group(pl):	X11/Aplikacje
+Source:		%{name}-%{version}.tar.gz
+Patch:		usermode-FHS20.patch
+Requires:	util-linux
 BuildRoot:	/tmp/%{name}-%{version}-root
 
 %description
@@ -46,8 +46,7 @@ make CFLAGS="$RPM_OPT_FLAGS `gtk-config --cflags`"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-make PREFIX=$RPM_BUILD_ROOT install
-make PREFIX=$RPM_BUILD_ROOT install-man
+make install install-man PREFIX=$RPM_BUILD_ROOT
 
 gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man{1,8}/*
 
@@ -56,7 +55,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-/etc/X11/wmconfig/*
+/etc/X11/applnk/*
 %attr(0755,root,root) %{_bindir}/*
 %attr(4755,root,root) %{_sbindir}/userhelper
-%{_mandir}/man[18]/*
+%{_mandir}/man1/*
+%{_mandir}/man8/*

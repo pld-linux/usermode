@@ -12,7 +12,7 @@ Group(pl):   X11/Aplikacje
 Source:      %{name}-%{version}.tar.gz
 Patch:       usermode.patch
 Requires:    util-linux
-Buildroot:   /tmp/%{name}-%{version}-root
+BuildRoot:	/tmp/%{name}-%{version}-root
 
 %description
 Several graphical tools, including a tool to help users manage floppies

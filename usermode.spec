@@ -55,10 +55,10 @@ gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man{1,8}/*
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%defattr(644, root, root, 755)
+%defattr(644,root,root,755)
 /etc/X11/wmconfig/*
-%attr(0755, root, root) %{_bindir}/*
-%attr(4755, root, root) %{_sbindir}/userhelper
+%attr(0755,root,root) %{_bindir}/*
+%attr(4755,root,root) %{_sbindir}/userhelper
 %{_mandir}/man[18]/*
 
 %changelog

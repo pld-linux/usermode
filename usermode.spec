@@ -49,7 +49,7 @@ rm -rf $RPM_BUILD_ROOT
 make PREFIX=$RPM_BUILD_ROOT install
 make PREFIX=$RPM_BUILD_ROOT install-man
 
-gzip -9nf $RPM_BUILD_ROOT/usr/man/man{1,8}/*
+gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man{1,8}/*
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -59,7 +59,7 @@ rm -rf $RPM_BUILD_ROOT
 /etc/X11/wmconfig/*
 %attr(0755, root, root) /usr/bin/*
 %attr(4755, root, root) /usr/sbin/userhelper
-%attr(0644, root,  man) /usr/man/man[18]/*
+%attr(0644, root,  man) %{_mandir}/man[18]/*
 
 %changelog
 * Tue Dec 1 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>

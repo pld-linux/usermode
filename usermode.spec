@@ -5,13 +5,14 @@ Summary(pl):	Narzêdzia u¿ytkownika
 Summary(tr):	Kullanýcý araçlarý
 Name:		usermode
 Version:	1.9
-Release:	2
+Release:	3
 License:	GPL
 Group:		X11/Applications
 Source0:	%{name}-%{version}.tar.gz
 # Source0-md5:	173586e150c4669bca40943af84104cf
 Patch0:		%{name}-FHS20.patch
 Requires:	util-linux
+#Requires:	nss_db
 BuildRequires:  pam-devel
 BuildRequires:	gtk+-devel
 BuildRequires:	pwdb-devel

@@ -9,6 +9,7 @@ Release:	2
 License:	GPL
 Group:		X11/Applications
 Source0:	%{name}-%{version}.tar.gz
+# Source0-md5:	173586e150c4669bca40943af84104cf
 Patch0:		%{name}-FHS20.patch
 Requires:	util-linux
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)

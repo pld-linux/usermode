@@ -71,7 +71,7 @@ rm -rf $RPM_BUILD_ROOT
 - added Group(pl).
 
 * Sat Oct 31 1998 Przemys³aw Bia³ek <lobo@polbox.com>
-- added %%defattr macro to allow build package from non root account,
+- added %%defattr macro to allows build package from non root account,
 - modify package for gtk-1.1.x,
 - added pl translation.
 

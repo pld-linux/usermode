@@ -11,13 +11,12 @@ Group:		X11/Applications
 Source0:	%{name}-%{version}.tar.gz
 # Source0-md5:	173586e150c4669bca40943af84104cf
 Patch0:		%{name}-FHS20.patch
+BuildRequires:	gtk+-devel
+BuildRequires:	pam-devel
+BuildRequires:	pwdb-devel
 Requires:	util-linux
 #Requires:	nss_db
-BuildRequires:	pam-devel
-BuildRequires:	gtk+-devel
-BuildRequires:	pwdb-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
 
 %description
 Several graphical tools, including a tool to help users manage
@@ -50,20 +49,24 @@ içerir.
 %patch -p1
 
 %build
-%{__make} CFLAGS="%{rpmcflags} `gtk-config --cflags`"
+%{__make} \
+	CFLAGS="%{rpmcflags} `gtk-config --cflags`"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__make} install install-man PREFIX=$RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_applnkdir}
-mv $RPM_BUILD_ROOT/etc/X11/applnk/System/* $RPM_BUILD_ROOT%{_applnkdir}
+install -d $RPM_BUILD_ROOT%{_desktopdir}
+
+%{__make} install install-man \
+	PREFIX=$RPM_BUILD_ROOT
+
+mv $RPM_BUILD_ROOT/etc/X11/applnk/System/* $RPM_BUILD_ROOT%{_desktopdir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%{_applnkdir}/*
 %attr(0755,root,root) %{_bindir}/*
 %attr(4755,root,root) %{_sbindir}/userhelper
 %{_mandir}/man[18]/*
+%{_desktopdir}/*

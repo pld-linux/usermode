@@ -69,4 +69,4 @@ rm -rf $RPM_BUILD_ROOT
 %attr(0755,root,root) %{_bindir}/*
 %attr(4755,root,root) %{_sbindir}/userhelper
 %{_mandir}/man[18]/*
-%{_desktopdir}/*
+%{_desktopdir}/*.desktop

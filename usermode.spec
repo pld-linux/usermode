@@ -50,6 +50,7 @@ içerir.
 
 %build
 %{__make} \
+	CC="%{__cc}" \
 	CFLAGS="%{rpmcflags} `gtk-config --cflags`"
 
 %install

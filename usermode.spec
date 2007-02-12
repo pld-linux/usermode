@@ -1,8 +1,8 @@
 Summary:	User Tools
-Summary(de):	Anwender-Tools
-Summary(fr):	Outils utilisateur
-Summary(pl):	Narzêdzia u¿ytkownika
-Summary(tr):	Kullanıcı araçları
+Summary(de.UTF-8):   Anwender-Tools
+Summary(fr.UTF-8):   Outils utilisateur
+Summary(pl.UTF-8):   NarzÄ™dzia uÅ¼ytkownika
+Summary(tr.UTF-8):   KullanÄ±cÄ± araÃ§larÄ±
 Name:		usermode
 Version:	1.9
 Release:	3
@@ -23,26 +23,26 @@ Several graphical tools, including a tool to help users manage
 floppies (and other removable media) and a tool to help the user
 change his or her finger information.
 
-%description -l de
+%description -l de.UTF-8
 Mehrere grafische Tools, u.a. eines zum Verwalten von Disketten (und
-anderen Wechseldatenträgern) und eines zum Ändern der
+anderen WechseldatentrÃ¤gern) und eines zum Ã„ndern der
 Finger-Informationen eines Benutzers
 
-%description -l fr
+%description -l fr.UTF-8
 De nombreux outils graphiques, dont un outil pour aider les
-utilsateurs à gérer les disquettes (et les autres supports amovibles)
-et un outil pour aider les utilisateurs à modifier les informations
+utilsateurs Ã  gÃ©rer les disquettes (et les autres supports amovibles)
+et un outil pour aider les utilisateurs Ã  modifier les informations
 les concernant.
 
-%description -l pl
-Kilka graficznych narzêdzi, w tym program pomagaj±cy u¿ytkownikowi
-zarz±dzanie dyskietkami (i innymi wymiennymi no¶nikami) tak¿e program
+%description -l pl.UTF-8
+Kilka graficznych narzÄ™dzi, w tym program pomagajÄ…cy uÅ¼ytkownikowi
+zarzÄ…dzanie dyskietkami (i innymi wymiennymi noÅ›nikami) takÅ¼e program
 pomocny przy zmianie informacji dla programu finger.
 
-%description -l tr
-Bu paket, kullanıcıların disketlerin yönetimini yapmak, kişisel finger
-bilgilerini değiştirmek gibi işler için kullanabilecekleri araçlar
-içerir.
+%description -l tr.UTF-8
+Bu paket, kullanÄ±cÄ±larÄ±n disketlerin yÃ¶netimini yapmak, kiÅŸisel finger
+bilgilerini deÄŸiÅŸtirmek gibi iÅŸler iÃ§in kullanabilecekleri araÃ§lar
+iÃ§erir.
 
 %prep
 %setup -q

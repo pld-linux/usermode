@@ -1,8 +1,8 @@
 Summary:	User Tools
-Summary(de.UTF-8):   Anwender-Tools
-Summary(fr.UTF-8):   Outils utilisateur
-Summary(pl.UTF-8):   Narzędzia użytkownika
-Summary(tr.UTF-8):   Kullanıcı araçları
+Summary(de.UTF-8):	Anwender-Tools
+Summary(fr.UTF-8):	Outils utilisateur
+Summary(pl.UTF-8):	Narzędzia użytkownika
+Summary(tr.UTF-8):	Kullanıcı araçları
 Name:		usermode
 Version:	1.9
 Release:	3

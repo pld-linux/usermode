@@ -8,9 +8,10 @@ Version:	1.9
 Release:	3
 License:	GPL
 Group:		X11/Applications
-Source0:	%{name}-%{version}.tar.gz
+Source0:	https://fedorahosted.org/releases/u/s/usermode/%{name}-%{version}.tar.gz
 # Source0-md5:	173586e150c4669bca40943af84104cf
 Patch0:		%{name}-FHS20.patch
+URL:		https://fedorahosted.org/usermode/
 BuildRequires:	gtk+-devel
 BuildRequires:	pam-devel
 BuildRequires:	pwdb-devel

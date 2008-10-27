@@ -5,7 +5,7 @@ Summary(pl.UTF-8):	Narzędzia użytkownika
 Summary(tr.UTF-8):	Kullanıcı araçları
 Name:		usermode
 Version:	1.9
-Release:	3
+Release:	4
 License:	GPL
 Group:		X11/Applications
 Source0:	https://fedorahosted.org/releases/u/s/usermode/%{name}-%{version}.tar.gz

@@ -4,14 +4,15 @@ Summary(fr.UTF-8):	Outils utilisateur
 Summary(pl.UTF-8):	Narzędzia użytkownika
 Summary(tr.UTF-8):	Kullanıcı araçları
 Name:		usermode
-Version:	1.107
+Version:	1.108
 Release:	1
 License:	GPL v2+
 Group:		Applications/System
 Source0:	https://fedorahosted.org/releases/u/s/usermode/%{name}-%{version}.tar.xz
-# Source0-md5:	00a53086a5716106585fe0234f1030d3
+# Source0-md5:	bef795b757defb9fd27cfbd48ef79861
+Source1:	config-util
 URL:		https://fedorahosted.org/usermode/
-BuildRequires:	gtk+-devel
+BuildRequires:	gtk+2-devel
 BuildRequires:	libuser-devel
 BuildRequires:	pam-devel
 BuildRequires:	pwdb-devel
@@ -76,8 +77,11 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 # in pld we do not install default wrappers
-%{__rm} $RPM_BUILD_ROOT/etc/security/console.apps/*
+%{__rm} -v $RPM_BUILD_ROOT/etc/security/console.apps/*
 %{__rm} $RPM_BUILD_ROOT%{_bindir}/shutdown
+
+install -p %{SOURCE1} \
+	$RPM_BUILD_ROOT/etc/security/console.apps/config-util
 
 %find_lang %{name}
 
@@ -89,6 +93,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc ChangeLog NEWS README
 %attr(4711,root,root) %{_sbindir}/userhelper
 %attr(755,root,root) %{_bindir}/consolehelper
+%config(noreplace) %verify(not md5 mtime size) /etc/security/console.apps/config-util
 %{_mandir}/man8/userhelper.8*
 %{_mandir}/man8/consolehelper.8*
 

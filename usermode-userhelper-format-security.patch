@@ -1,0 +1,11 @@
+--- usermode-1.111/userhelper.c.orig	2013-01-26 22:20:46.000000000 +0100
++++ usermode-1.111/userhelper.c	2013-01-26 22:20:57.000000000 +0100
+@@ -582,7 +582,7 @@
+ 
+ 	if (banner == 0) {
+ 		if ((data->banner != NULL) && (data->domain != NULL)) {
+-			text = g_strdup_printf(dgettext(data->domain, data->banner));
++			text = g_strdup_printf("%s", dgettext(data->domain, data->banner));
+ 		} else {
+ 			if ((service != NULL) && (strlen(service) > 0)) {
+ 				if (data->fallback_allowed) {

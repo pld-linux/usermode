@@ -4,21 +4,23 @@ Summary(fr.UTF-8):	Outils utilisateur
 Summary(pl.UTF-8):	Narzędzia użytkownika
 Summary(tr.UTF-8):	Kullanıcı araçları
 Name:		usermode
-Version:	1.108
+Version:	1.111
 Release:	1
 License:	GPL v2+
 Group:		Applications/System
 Source0:	https://fedorahosted.org/releases/u/s/usermode/%{name}-%{version}.tar.xz
-# Source0-md5:	bef795b757defb9fd27cfbd48ef79861
+# Source0-md5:	28ba510fbd8da9f4e86e57d6c31cff29
 Source1:	config-util
 URL:		https://fedorahosted.org/usermode/
 BuildRequires:	gtk+2-devel
+BuildRequires:	libblkid-devel
 BuildRequires:	libuser-devel
 BuildRequires:	pam-devel
 BuildRequires:	pwdb-devel
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 #Requires:	nss_db
+Patch0:		%{name}-userhelper-format-security.patch
 Requires:	util-linux
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -65,6 +67,7 @@ with graphical tools for certain account management tasks.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure
@@ -76,9 +79,7 @@ rm -rf $RPM_BUILD_ROOT
 	INSTALL='install -p' \
 	DESTDIR=$RPM_BUILD_ROOT
 
-# in pld we do not install default wrappers
-%{__rm} -v $RPM_BUILD_ROOT/etc/security/console.apps/*
-%{__rm} $RPM_BUILD_ROOT%{_bindir}/shutdown
+install -d $RPM_BUILD_ROOT/etc/security/console.apps
 
 install -p %{SOURCE1} \
 	$RPM_BUILD_ROOT/etc/security/console.apps/config-util

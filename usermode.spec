@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_without	selinux	# SELinux functionality
+#
 Summary:	Tools for certain user account management tasks
 Summary(de.UTF-8):	Anwender-Tools
 Summary(fr.UTF-8):	Outils utilisateur
@@ -11,16 +15,18 @@ Group:		Applications/System
 Source0:	https://fedorahosted.org/releases/u/s/usermode/%{name}-%{version}.tar.xz
 # Source0-md5:	28ba510fbd8da9f4e86e57d6c31cff29
 Source1:	config-util
+Patch0:		%{name}-userhelper-format-security.patch
 URL:		https://fedorahosted.org/usermode/
-BuildRequires:	gtk+2-devel
+BuildRequires:	glib2-devel >= 2.0
+BuildRequires:	gtk+2-devel >= 2:2.23
 BuildRequires:	libblkid-devel
+%{?with_selinux:BuildRequires:	libselinux-devel}
 BuildRequires:	libuser-devel
 BuildRequires:	pam-devel
-BuildRequires:	pwdb-devel
+BuildRequires:	startup-notification-devel
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 #Requires:	nss_db
-Patch0:		%{name}-userhelper-format-security.patch
 Requires:	util-linux
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -52,8 +58,10 @@ içerir.
 
 %package gtk
 Summary:	Graphical tools for certain user account management tasks
+Summary(pl.UTF-8):	Graficzne narzędzia obsługujące zadania zarządzania kontami użytkowników
 Group:		X11/Applications
 Requires:	%{name} = %{version}-%{release}
+Requires:	gtk+2 >= 2:2.23
 
 %description gtk
 The usermode-gtk package contains several graphical tools for users:
@@ -62,15 +70,20 @@ their finger information. Usermount lets users mount, unmount, and
 format file systems. Userpasswd allows users to change their
 passwords.
 
-Install the usermode-gtk package if you would like to provide users
-with graphical tools for certain account management tasks.
+%description gtk -l pl.UTF-8
+Ten pakiet zawiera kilka graficznych narzędzi dla użytkowników:
+userinfo, usermount i userpasswd. Userinfo pozwala użytkownikom
+zmieniać informacje udostępniane przez finger. Usermount pozwala
+montować, odmontowywać i formatować systemy plików. Userpasswd pozwala
+zmieniać hasło.
 
 %prep
 %setup -q
 %patch0 -p1
 
 %build
-%configure
+%configure \
+	%{?with_selinux:--with-selinux}
 %{__make}
 
 %install
@@ -92,7 +105,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc ChangeLog NEWS README
-%attr(4711,root,root) %{_sbindir}/userhelper
+%attr(4755,root,root) %{_sbindir}/userhelper
 %attr(755,root,root) %{_bindir}/consolehelper
 %config(noreplace) %verify(not md5 mtime size) /etc/security/console.apps/config-util
 %{_mandir}/man8/userhelper.8*

@@ -9,7 +9,7 @@ Summary(pl.UTF-8):	Narzędzia użytkownika
 Summary(tr.UTF-8):	Kullanıcı araçları
 Name:		usermode
 Version:	1.111
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		Applications/System
 Source0:	https://fedorahosted.org/releases/u/s/usermode/%{name}-%{version}.tar.xz

@@ -1,0 +1,29 @@
+Fix static analysis issues: memory leak in gsmclient.c (g_get_current_dir
+result not freed) and missing else branch in shvar.c (keyValue leak when
+!newval && !val2 && !val1). From Fedora.
+
+--- usermode-1.114.orig/gsmclient.c	2018-08-15 12:13:18.000000000 +0200
++++ usermode-1.114/gsmclient.c	2026-03-14 12:22:47.007490259 +0100
+@@ -197,8 +197,10 @@
+   /* Default property values (this code assumes we start
+    * with an empty proplist)
+    */
++  gchar *curdir = g_get_current_dir ();
+   push_prop (client, smprop_new_string (GSM_CLIENT_PROPERTY_CURRENT_DIRECTORY,
+-                                        g_get_current_dir (), -1));
++                                        curdir, -1));
++  g_free (curdir);
+ 
+   g_snprintf (pid_str, sizeof (pid_str), "%d", (int) getpid ());
+   push_prop (client, smprop_new_string (GSM_CLIENT_PROPERTY_PROCESS_ID,
+--- usermode-1.114.orig/shvar.c	2021-04-28 11:21:15.000000000 +0200
++++ usermode-1.114/shvar.c	2026-03-14 12:22:55.191812454 +0100
+@@ -347,7 +347,7 @@
+ 	    g_list_free_1(s->current);
+ 	    s->modified = 1;
+ 	    goto bail; /* do not need keyValue */
+-	}
++	} else goto bail;
+ 	goto end;
+     }
+ 

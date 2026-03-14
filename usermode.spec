@@ -8,17 +8,18 @@ Summary(fr.UTF-8):	Outils utilisateur
 Summary(pl.UTF-8):	Narzędzia użytkownika
 Summary(tr.UTF-8):	Kullanıcı araçları
 Name:		usermode
-Version:	1.111
-Release:	2
+Version:	1.114
+Release:	1
 License:	GPL v2+
 Group:		Applications/System
-Source0:	https://fedorahosted.org/releases/u/s/usermode/%{name}-%{version}.tar.xz
-# Source0-md5:	28ba510fbd8da9f4e86e57d6c31cff29
+Source0:	https://releases.pagure.org/%{name}/%{name}-%{version}.tar.xz
+# Source0-md5:	5e1816bedcc2a8195c63d29ba51df61b
 Source1:	config-util
-Patch0:		%{name}-userhelper-format-security.patch
-URL:		https://fedorahosted.org/usermode/
+Patch0:		%{name}-fix-sast.patch
+URL:		https://pagure.io/usermode/
 BuildRequires:	glib2-devel >= 2.0
 BuildRequires:	gtk+2-devel >= 2:2.23
+BuildRequires:	intltool
 BuildRequires:	libblkid-devel
 %{?with_selinux:BuildRequires:	libselinux-devel}
 BuildRequires:	libuser-devel
@@ -83,7 +84,8 @@ zmieniać hasło.
 
 %build
 %configure \
-	%{?with_selinux:--with-selinux}
+	%{?with_selinux:--with-selinux} \
+	--without-fexecve
 %{__make}
 
 %install

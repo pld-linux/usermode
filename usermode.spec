@@ -24,6 +24,7 @@ BuildRequires:	libblkid-devel
 %{?with_selinux:BuildRequires:	libselinux-devel}
 BuildRequires:	libuser-devel
 BuildRequires:	pam-devel
+BuildRequires:	pkgconfig
 BuildRequires:	startup-notification-devel
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
@@ -84,20 +85,20 @@ zmieniać hasło.
 
 %build
 %configure \
+	FDFORMAT=/usr/sbin/fdformat \
 	%{?with_selinux:--with-selinux} \
 	--without-fexecve
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %{__make} install \
 	INSTALL='install -p' \
 	DESTDIR=$RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT/etc/security/console.apps
-
-install -p %{SOURCE1} \
-	$RPM_BUILD_ROOT/etc/security/console.apps/config-util
+cp -p %{SOURCE1} $RPM_BUILD_ROOT/etc/security/console.apps/config-util
 
 %find_lang %{name}
 
@@ -120,12 +121,20 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/userinfo
 %attr(755,root,root) %{_bindir}/usermount
 %attr(755,root,root) %{_bindir}/userpasswd
+%{_datadir}/%{name}
 %{_mandir}/man1/pam-panel-icon.1*
 %{_mandir}/man1/userinfo.1*
 %{_mandir}/man1/usermount.1*
 %{_mandir}/man1/userpasswd.1*
 %{_mandir}/man8/consolehelper-gtk.8*
-%{_datadir}/%{name}
-%{_desktopdir}/*.desktop
-%{_pixmapsdir}/*.png
+%{_desktopdir}/redhat-userinfo.desktop
+%{_desktopdir}/redhat-usermount.desktop
+%{_desktopdir}/redhat-userpasswd.desktop
+%{_pixmapsdir}/badge-small.png
+%{_pixmapsdir}/disks.png
+%{_pixmapsdir}/keyring.png
 %{_pixmapsdir}/keys.xpm
+%{_pixmapsdir}/password.png
+%{_pixmapsdir}/status_lock.png
+%{_pixmapsdir}/status_unlocked.png
+%{_pixmapsdir}/user_icon.png
